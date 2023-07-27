@@ -1,0 +1,26 @@
+
+
+<body style="background-color: rgb(192, 192, 227);">
+    <section class="container">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
+                <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
+                <h1 class="opacity">LOGIN</h1>
+                <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
+                    <input minlength="4" required #name="ngModel" ngModel name="userName" id="userName" matInput placeholder="Username">
+                    <b><span *ngIf="name.invalid && name.touched" style="color: rgb(63, 26, 26);">Invalid Username</span></b>
+                    <input minlength="4" required type="password" required #pass="ngModel" ngModel name="userPassword" id="userPassword" matInput placeholder="Password" type="password">
+                    <b><span *ngIf="pass.invalid && pass.touched" style="color: rgb(63, 26, 26);">Invalid Password</span></b>
+                    <button [disabled]="loginForm.invalid" type="submit"  class="opacity">SUBMIT</button>
+                </form>
+                <div class="register-forget opacity">
+                    <button style="background-color: rgb(171, 185, 212); " mat-raised-button type="button" class="w-20" (click)="registerUser()">
+                        Register Here
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+

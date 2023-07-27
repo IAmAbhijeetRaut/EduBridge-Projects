@@ -1,0 +1,46 @@
+<!---create a registration form-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link type="text/css" href="style.css">
+</head>
+<body bgcolor="Grey" >
+     <table  border="2px" >
+        <tr><td id="t1"></td> </tr>
+        <tr> <td id="t2"></td>  </tr>
+         <tr><td id="t3"></td></tr>
+        <tr><td id="t4"></td> </tr>
+         <tr> <td id="t5"></td></tr>
+    </table>
+    <div  >
+<form id="form1"   style=" padding: 40px; font-size: larger; color: rgb(238, 255, 0); border: 10px;" align="center">
+    <h1 style="color: rgba(255, 0, 0, 0.644); padding-bottom: 30px;">REGISTER</h1>
+    <label style="padding-right: 40px;">First Name</label>
+    <input type="text" id="F1">
+    <br>
+    <br>
+    <label style="padding-right: 42px;">Last Name</label>
+    <input type="text" id="L1">
+    <br><br>
+    <label style="padding-right: 15px;">Gender: </label>
+    Male<input type="radio"  value="Male" name="gender">
+    Female <input type="radio"  value="Female" name="gender">
+    Others<input type="radio"  value="Others" name="gender">
+    <br><br>
+    <label style="padding-right: 40px;">Mobile No</label>
+    <input type="text" id="M1">
+    <br><br>
+    <label style="padding-right: 80px; ">Email
+    </label>
+    <input type="text" id="E1">
+    <br><br>
+    <input type="button" value="submit" onclick="register1()" id="sub" style=" font-size: large; " >
+</form>
+</div>
+<script src="Assignment1.js"></script>
+</body>
+</html>

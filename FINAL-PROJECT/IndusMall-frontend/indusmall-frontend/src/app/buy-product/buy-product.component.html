@@ -1,0 +1,188 @@
+<div class="container mt-5">
+    <div class="order-form">
+      <div class="order-form__details">
+        <form #orderForm="ngForm" (ngSubmit)="createTransactionAndPlaceOrder(orderForm)">
+          <h2 class="order-form__title">Please fill the order details</h2>
+          <mat-form-field appearance="outline" class="order-form__field">
+            <mat-label>Full Name</mat-label>
+            <input id="fullName" name="fullName" matInput placeholder="Full Name" [(ngModel)]="orderDetails.fullName" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="order-form__field">
+            <mat-label>Full Address</mat-label>
+            <input id="fullAddress" name="fullAddress" matInput placeholder="Full Address" [(ngModel)]="orderDetails.fullAddress" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="order-form__field">
+            <mat-label>Contact Number</mat-label>
+            <input id="contactNumber" name="contactNumber" matInput placeholder="Contact Number" [(ngModel)]="orderDetails.contactNumber" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="order-form__field">
+            <mat-label>Alternate Contact Number</mat-label>
+            <input id="alternateContactNumber" name="alternateContactNumber" matInput placeholder="Alternate Contact Number" [(ngModel)]="orderDetails.alternateContactNumber">
+          </mat-form-field>
+          <div align="right">
+            <button type="submit" mat-stroked-button color="primary" class="order-form__button">Place Order</button>
+          </div>
+        </form>
+      </div>
+      <div class="order-form__summary">
+        <h2 class="order-form__title">Order Summary</h2>
+        <table class="order-form__table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of productDetails">
+              <td>{{ product.productName }}</td>
+              <td>&#8377;{{ product.productDiscountedPrice }}</td>
+              <td>
+                <select #quantity [ngModel]="getQuantityForProduct(product.productId)" (change)="onQuantityChange(quantity.value, product.productId)" class="order-form__quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </td>
+              <td>&#8377;{{ getCalculatedTotal(product.productId, product.productDiscountedPrice) }}</td>
+            </tr>
+            <tr>
+              <td colspan="4">
+                <h3>Total: &#8377;{{ getCalculatedGrandTotal() }}</h3>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+<!-- <div class="container mt-5">
+    <div class="order-form">
+      <div class="order-form__details">
+        <form #orderForm="ngForm" (ngSubmit)="createTransactionAndPlaceOrder(orderForm)">
+          <h2 class="order-form__title">Place Your Order</h2>
+          <mat-form-field appearance="outline" class="order-form__field">
+            <mat-label>Full Name</mat-label>
+            <input id="fullName" name="fullName" matInput placeholder="Full Name" [(ngModel)]="orderDetails.fullName" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="order-form__field">
+            <mat-label>Full Address</mat-label>
+            <input id="fullAddress" name="fullAddress" matInput placeholder="Full Address" [(ngModel)]="orderDetails.fullAddress" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="order-form__field">
+            <mat-label>Contact Number</mat-label>
+            <input id="contactNumber" name="contactNumber" matInput placeholder="Contact Number" [(ngModel)]="orderDetails.contactNumber" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="order-form__field">
+            <mat-label>Alternate Contact Number</mat-label>
+            <input id="alternateContactNumber" name="alternateContactNumber" matInput placeholder="Alternate Contact Number" [(ngModel)]="orderDetails.alternateContactNumber">
+          </mat-form-field>
+          <div class="text-right">
+            <button type="submit" mat-stroked-button color="primary" class="order-form__button">Place Order</button>
+          </div>
+        </form>
+      </div>
+      <div class="order-form__summary">
+        <h2 class="order-form__title">Order Summary</h2>
+        <table class="order-form__table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of productDetails">
+              <td>{{ product.productName }}</td>
+              <td>&#8377;{{ product.productDiscountedPrice }}</td>
+              <td>
+                <select #quantity [ngModel]="getQuantityForProduct(product.productId)" (change)="onQuantityChange(quantity.value, product.productId)" class="order-form__quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </td>
+              <td>&#8377;{{ getCalculatedTotal(product.productId, product.productDiscountedPrice) }}</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-right">Total</td>
+              <td class="order-form__total">&#8377;{{ getCalculatedGrandTotal() }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> -->
+  
+  
+
+<!-- <div class="container mt-5">
+    <div class="card p-3">
+        <div class="row">
+            <div class="col-6">
+                <form #orderForm="ngForm" (ngSubmit)="createTransactionAndPlaceOrder(orderForm)">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Full Name</mat-label>
+                        <input id="fullName" name="fullName" matInput placeholder="Full Name" [(ngModel)]="orderDetails.fullName">
+                      </mat-form-field>
+                      <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Full Address</mat-label>
+                        <input id="fullAdress" name="fullAdress" matInput placeholder="Full Address" [(ngModel)]="orderDetails.fullAddress">
+                      </mat-form-field>
+                      <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Contact Number</mat-label>
+                        <input id="contactNumber" name="contactNumber" matInput placeholder="Contact Number" [(ngModel)]="orderDetails.contactNumber">
+                      </mat-form-field>
+                      <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Alternate Contact Number</mat-label>
+                        <input id="alternateContactNumber" name="alternateContactNumber" matInput placeholder="Alternate Contact Number" [(ngModel)]="orderDetails.alternateContactNumber">
+                      </mat-form-field>
+                      <div align="right">
+                        <button type="submit" mat-stroked-button color="primary">Place Order</button>
+                      </div>
+                    </form>
+            </div>
+            <div class="col-6">
+                <table class="table">
+                    <thead class="thead">
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                    </thead>
+                    <tbody class="tbody">
+                            <tr *ngFor="let product of productDetails">
+                                <td>{{product.productName}}</td>
+                                <td>{{product.productDiscountedPrice}}</td>
+                                <td>
+                                    <select #quantity [ngModel]="getQuantityForProduct(product.productId)" (change)="onQuantityChange(quantity.value, product.productId)" class="form-select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </td>
+                                <td>{{getCalculatedTotal(product.productId, product.productDiscountedPrice)}}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Total</td>
+                                <td>{{getCalculatedGrandTotal()}}</td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+ -->

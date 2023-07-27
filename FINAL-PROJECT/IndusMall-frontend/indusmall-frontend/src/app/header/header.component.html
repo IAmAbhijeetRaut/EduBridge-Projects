@@ -1,0 +1,23 @@
+
+<header class="custom-header">
+  <div class="logo">
+    <span class="logo-text">
+      <!-- Remove the nav-link class from the anchor tag -->
+      <a routerLink="/">IndusMall</a>
+    </span>
+  </div>  
+  <nav class="custom-nav" *ngIf="isLoggedIn()">
+    <a routerLink="/" class="nav-link">Home</a>
+    <a *ngIf="!isAdmin()" routerLink="/cart" class="nav-link">Cart</a>
+    <a *ngIf="!isAdmin()" routerLink="/myOrders" class="nav-link">My Orders</a>
+    <a *ngIf="isAdmin()" routerLink="/addNewProduct" class="nav-link">Add New Product</a>
+    <a *ngIf="isAdmin()" routerLink="/showProductDetails" class="nav-link">Show Product Details</a>
+    <a *ngIf="isAdmin()" routerLink="/orderInfo" class="nav-link">Order Info</a>
+  </nav>
+  <div class="auth-buttons">
+    <button *ngIf="isLoggedIn()"  mat-raised-button color="primary"> Logged in as {{currentLoggedInUser}}</button>
+    <button *ngIf="!isLoggedIn()" mat-raised-button color="primary" routerLink="/login">Login</button>
+    <button *ngIf="isLoggedIn()" mat-raised-button color="warn" (click)="logout()">Logout</button>
+  </div>
+</header>
+

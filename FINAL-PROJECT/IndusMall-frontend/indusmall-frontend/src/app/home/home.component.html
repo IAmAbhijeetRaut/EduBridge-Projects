@@ -1,0 +1,35 @@
+
+
+<div class="container mt-5">
+  <h2 style="font-family: sans-serif; background-color: rgb(171, 171, 205); max-width: 210px; padding: 2px; text-align: center; border-radius: 5px;">Search Product</h2>
+  <mat-form-field appearance="outline" class="w-40">
+    
+    <mat-label>Search</mat-label>
+    <input #searchKeyword (keyup)="searchByKeyword(searchKeyword.value)" name="searchKey" id="searchKey" matInput
+      placeholder="Search Product By Name Or Description">
+  </mat-form-field>
+
+  <mat-grid-list cols="4" rowHeight="3:5" gutterSize="10">
+    <mat-grid-tile *ngFor="let p of productDetails">
+      <div class="product-container">
+        <div class="image-container">
+          <img class="home-page-product-image" [src]="p.productImages[0].url">
+        </div>
+        <div class="product-details">
+          <p class="product-name">{{ p.productName }}</p>
+          <p class="product-description">{{ p.productDescription }}</p>
+          <p class="product-price">
+            Discounted Price: &#8377;{{ p.productDiscountedPrice }} &nbsp; <br>
+            Actual Price: <span class="actual-price">&#8377; {{ p.productActualPrice }}</span>
+          </p>
+          <button mat-raised-button style="background-color: rgba(170, 187, 204, 0.492);" (click)="showProductDetails(p.productId)">Show Product</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="text-center mt-5" *ngIf="showLoadButton">
+    <button mat-raised-button color="primary" type="button" (click)="loadMoreProduct()">Load More</button>
+  </div>
+
+</div>

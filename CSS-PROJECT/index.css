@@ -1,0 +1,35 @@
+a{
+    color: black;
+    
+    text-decoration: none;
+}
+#profile{
+    border-radius: 50%;
+    border-right: solid;
+    border-color: rgb(231, 225, 237);
+    opacity: 90%;
+    filter:brightness(80%);
+    
+}
+#about,#exp,#edu,#skills,#personal{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.exp,.edu,.skills,.personal{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.about{
+    padding-bottom: 15px;
+    
+}
+hr{
+    border: 1px;
+    border-style: dotted;
+    border-color: #DAAD86;
+}
+body{
+    font-family:'Times New Roman', Times, serif;
+}
+
+

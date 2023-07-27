@@ -1,0 +1,74 @@
+<div class="container mt-5">
+    <div class="login-container">
+        <div class="circle circle-one"></div>
+        <div class="form-container">
+            <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
+            <h1 class="opacity">REGISTER</h1>
+            <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+                <input minlength="4" required #name="ngModel" ngModel name="userName" id="userName" matInput placeholder="Username">
+                <b><span *ngIf="name.invalid && name.touched" style="color: rgb(63, 26, 26);">Invalid Username</span></b>
+                <input pattern="[A-Za-z]+" minlength="4" required #firstname="ngModel" ngModel name="userFirstName" id="userFirstName" matInput placeholder="First Name">
+                <b><span *ngIf="firstname.invalid && firstname.touched" style="color: rgb(63, 26, 26);">Invalid Firstname</span></b>
+                <input pattern="[A-Za-z]+" minlength="4" required #lastname="ngModel" ngModel name="userLastName" id="userLastName" matInput placeholder="Last Name">
+                <b><span *ngIf="lastname.invalid && lastname.touched" style="color: rgb(63, 26, 26);">Invalid Lastname</span></b>
+                <input pattern="^(?=.*\d).{4,}$" minlength="4" required #pass="ngModel" ngModel name="userPassword" id="userPassword" matInput placeholder="Password">
+                <b><span *ngIf="pass.invalid && pass.touched" style="color: rgb(63, 26, 26);">Invalid Password</span></b>
+                <button [disabled]="registerForm.invalid" class="opacity" mat-raised-button color="primary" type="submit">REGISTER</button>
+            </form>
+        </div>
+        <div class="circle circle-two"></div>
+    </div>
+    <div class="theme-btn-container"></div>
+</div>
+
+
+<!-- <div class="container mt-5">
+    <div class="card" style="padding: 20px;">
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Username</mat-label>
+                <input minlength="4" required #name="ngModel" 
+                matInput 
+                ngModel 
+                name="userName" 
+                id="userName" 
+                placeholder="Username">
+                <b><span *ngIf="name.invalid && name.touched" style="color: rgb(200, 123, 123);">Invalid Username</span></b>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>First Name</mat-label>
+                <input pattern="[A-Za-z]+" minlength="4" required #firstname="ngModel"
+                matInput 
+                ngModel 
+                name="userFirstName"
+                id="userFirstName" 
+                placeholder="First Name">
+                <b><span *ngIf="firstname.invalid && firstname.touched" style="color: rgb(200, 123, 123);">Invalid Firstname</span></b>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Last Name</mat-label>
+                <input pattern="[A-Za-z]+" minlength="4" required #lastname="ngModel"
+                matInput 
+                ngModel 
+                name="userLastName"
+                id="userLastName" 
+                placeholder="Last Name">
+                <b><span *ngIf="lastname.invalid && lastname.touched" style="color: rgb(200, 123, 123);">Invalid Lastname</span></b>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Password</mat-label>
+                <input pattern="^(?=.*\d).{4,}$" minlength="4" required #pass="ngModel"
+                matInput 
+                ngModel 
+                name="userPassword"
+                id="userPassword" 
+                placeholder="Password">
+                <b><span *ngIf="pass.invalid && pass.touched" style="color: rgb(200, 123, 123);">Invalid Password</span></b>
+            </mat-form-field>
+            <div class="text-center">
+                <button [disabled]="registerForm.invalid" mat-raised-button color="primary" type="submit">Register</button>
+            </div> 
+        </form>
+    </div>
+</div>
+ -->
